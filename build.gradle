@@ -1,0 +1,31 @@
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '7.1.0'
+}
+
+group 'ac.verus'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    maven {
+        name 'nms-repo'
+        url 'https://repo.codemc.org/repository/nms/'
+    }
+}
+
+dependencies {
+    annotationProcessor 'org.projectlombok:lombok:1.18.22'
+    compileOnly 'org.projectlombok:lombok:1.18.22'
+    compileOnly 'org.spigotmc:spigot:1.8.8-R0.1-SNAPSHOT'
+    compileOnly 'org.spigotmc:spigot:1.7.10-R0.1-SNAPSHOT'
+    implementation files('lib/Verus.jar')
+}
+
+shadowJar {
+    archiveBaseName.set('Verus')
+    archiveClassifier.set('')
+    archiveVersion.set('')
+    exclude 'META-INF/**'
+    exclude 'LICENSE'
+}
